@@ -15,21 +15,15 @@
     <header id="header--right">
         <nav>
             <ul>
-                {% for social in socials %}
-                    {{ social.render() }}
-                {% endfor %}
+                {% for social in socials %}{{ social }}{% endfor %}
             </ul>
         </nav>
     </header>
     <section id="content--left">
-        {%- for article in left %}
-            {{ article.render() }}
-        {%- endfor %}
+        {% for article in left %}{{ article }}{% endfor %}
     </section>
     <section id="content--right">
-        {%- for article in right %}
-            {{ article.render() }}
-        {%- endfor %}
+        {% for article in right %}{{ article }}{% endfor %}
     </section>
     <script>
     var btns = document.querySelectorAll('.btn');

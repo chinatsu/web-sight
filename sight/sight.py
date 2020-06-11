@@ -1,4 +1,4 @@
-from models import link, Article, Social
+from elements import link, article, social
 from flask import Flask, render_template, send_from_directory
 import random
 
@@ -23,60 +23,60 @@ def index():
     ]
     greetings = ["hello", "what up"]
     left = [
-        Article("I'm Kent", random.choice(greetings)),
-        Article(
+        article("I'm Kent", random.choice(greetings)),
+        article(
             "I'm a software developer at " + link("https://nav.no/", "Nav"),
             "the Norwegian Labour and Welfare Administration",
         ),
-        Article(
+        article(
             "I'm an admin at " + link("https://harddrop.com/", "HardDrop"),
             "the largest Tetris community in the west",
         ),
     ]
     right = [
-        Article(
+        article(
             "I like Python and Rust",
             "I primarily use Kotlin and TypeScript/React at work",
         ),
-        Article(
+        article(
             "I like music a lot", f"you can talk to me about {random.choice(genres)}"
         ),
-        Article(
+        article(
             "I'm into mechanical keyboards",
             "although my daily driver is a Topre keyboard",
         ),
-        Article("I play a lot of Tetris", "I have cleared 40 lines in 29.042 seconds"),
+        article("I play a lot of Tetris", "I have cleared 40 lines in 29.042 seconds"),
     ]
     socials = [
-        Social("https://twitter.com/malpractitioner", "twitter", "my twitter profile"),
-        Social(
+        social("https://twitter.com/malpractitioner", "twitter", "my twitter profile"),
+        social(
             "https://instagram.com/malpractitioner_",
             "instagram",
             "my instagram profile",
         ),
-        Social(
+        social(
             "cn#9999",
             "discord",
             "click to copy my discord username to clipboard",
             copy=True,
         ),
-        Social("https://github.com/chinatsu", "github", "my github profile"),
-        Social(
+        social("https://github.com/chinatsu", "github", "my github profile"),
+        social(
             "https://codegolf.stackexchange.com/users/91616/chinatsu",
             "stack-overflow",
             "my codegolf profile on stackexchange",
         ),
-        Social("https://steamcommunity.com/id/lomg", "steam", "my steam profile"),
-        Social("https://twitch.tv/cutenice", "twitch", "my twitch profile"),
-        Social(
+        social("https://steamcommunity.com/id/lomg", "steam", "my steam profile"),
+        social("https://twitch.tv/cutenice", "twitch", "my twitch profile"),
+        social(
             "https://soundcloud.com/uwaa", "soundcloud", "one of my soundcloud profiles"
         ),
-        Social(
+        social(
             "https://open.spotify.com/user/213p4w55e6upnsr73x6zbplya",
             "spotify",
             "my spotify profile",
         ),
-        Social(
+        social(
             "chinatsun",
             "snapchat",
             "click to copy my snapchat profile to clipboard",
