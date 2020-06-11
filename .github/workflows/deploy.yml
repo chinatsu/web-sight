@@ -16,4 +16,3 @@ jobs:
                 git pull
                 cd
                 systemctl --user restart sight
-                chown -R cn:www-data web-sight
