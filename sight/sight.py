@@ -3,7 +3,6 @@ from flask import Flask, render_template, send_from_directory
 import random
 
 app = Flask(__name__)
-app.config["SECRET_KEY"] = key
 
 
 @app.route("/static/<file>")

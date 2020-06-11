@@ -130,5 +130,4 @@ dmypy.json
 
 # project specific
 web-sight/
-
-secret.py
+*.sock
