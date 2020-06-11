@@ -5,11 +5,6 @@ import random
 app = Flask(__name__)
 
 
-@app.route("/static/<file>")
-def serve(file):
-    return send_from_directory("files", file)
-
-
 @app.route("/")
 def index():
     genres = [

@@ -1,0 +1,17 @@
+on: push
+jobs:
+    deploy:
+        name: Deploy my web sight
+        runs-on: ubuntu-latest
+        steps:
+        - name: Pull changes and restart service
+          uses: appleboy/ssh-action@master
+          with:
+            host: ${{ secrets.HOST }}
+            username: ${{ secrets.USERNAME }}
+            password: ${{ secrets.PASSWORD }}
+            key: ${{ secrets.KEY }}
+            script: |
+                cd ~/web-sight
+                git pull
+                systemctl --user restart sight
