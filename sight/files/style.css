@@ -1,0 +1,204 @@
+:root {
+    --bg: #081c15;
+    --fg: #d8f3dc;
+    --social: #52b788;
+    --link: #40916c;
+}
+
+body {
+    display: grid;
+    margin: 0;
+    font-family: 'Poppins', 'sans-serif';
+    font-size: 2rem;
+    grid-template-rows: 1fr 12fr 12fr 2fr;
+    grid-template-areas:
+        "left-header"
+        "left-main"
+        "right-main"
+        "right-header";
+}
+
+a {
+    color: var(--link);
+}
+
+a:hover {
+    color: var(--social);
+}
+
+a:focus {
+    border: 2px solid var(--social);
+    margin: -2px;
+    color: var(--social);
+    text-decoration: none;
+}
+
+h1,h2 {
+    font-size: 2rem;
+    font-weight: 400;
+    margin-bottom: 0;
+}
+
+article {
+    width: 100%;
+    text-align: center;
+}
+
+p {
+    padding: 0 5%;
+    text-align: center;
+    font-size: 1rem;
+    margin-top: 0;
+}
+
+#header--left {
+    text-align: center;
+    background: var(--fg);
+    border-bottom: 1px solid var(--bg);
+}
+
+#header--left p {
+    color: var(--bg);
+}
+
+#header--right {
+    grid-area: right-header;
+    background: var(--bg);
+}
+
+#header--right ul {
+    display: grid;
+    grid-auto-flow: column;
+    align-content: center;
+    font-size: 4rem;
+}
+
+#header--right a {
+    text-decoration: none;
+    color: var(--social);
+}
+
+#header--right button {
+    background: none!important;
+    border: none;
+    font-size: 4rem;
+    padding: 0!important;
+    color: var(--social);
+    cursor: pointer;
+}
+
+#header--right a:hover,#header--right button:hover {
+    color: var(--fg);
+}
+
+#header--right a:focus,#header--right button:focus {
+    color: var(--fg);
+    border: 2px solid var(--fg);
+    margin: -2px;
+}
+
+#header--right li {
+    display: inline;
+}
+
+#content--left {
+    display: grid;
+    color: var(--bg);
+    background: var(--fg);
+    align-content: center;
+    justify-items: center;
+    grid-area: left-main;
+}
+
+#content--right {
+    background: var(--bg);
+    color: var(--fg);
+    display: grid;
+    align-content: center;
+    justify-items: center;
+    grid-area: right-main;
+}
+
+@media screen and (orientation:landscape) {
+    body {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: 3em auto;
+        grid-template-areas:
+            "left-header right-header"
+            "left-main right-main";
+        height: 100vh;
+    }
+
+    #header--right ul {
+        font-size: 2rem;
+    }
+
+    #header--left {
+        border-bottom: 0px;
+    }
+    #header--right button {
+        font-size: 2rem;
+    }
+
+}
+
+/*
+   a subset of the tooltip thing from github's primer
+*/
+
+.tooltipped{
+    position:relative
+}
+.tooltipped:after{
+    position:absolute;
+    z-index:1000000;
+    display:none;
+    font-size: 1rem;
+    padding:5px 8px;
+    color:var(--bg);
+    text-align:center;
+    text-decoration:none;
+    text-shadow:none;
+    text-transform:none;
+    letter-spacing:normal;
+    word-wrap:break-word;
+    white-space:pre;
+    pointer-events:none;
+    content:attr(aria-label);
+    background: var(--social);
+    border-radius:3px;
+    -webkit-font-smoothing:subpixel-antialiased
+}
+
+.tooltipped:before{
+    position:absolute;
+    z-index:1000001;
+    display:none;
+    width:0;
+    height:0;
+    color:var(--social);
+    pointer-events:none;
+    content:"";
+    border:5px solid transparent
+}
+.tooltipped:hover:before,.tooltipped:hover:after,.tooltipped:active:before,.tooltipped:active:after,.tooltipped:focus:before,.tooltipped:focus:after{
+    display:inline-block;
+    text-decoration:none
+}
+.tooltipped-s:after{
+    top:100%;
+    right:50%;
+    margin-top:5px
+}
+.tooltipped-s:before{
+    top:auto;
+    right:50%;
+    bottom:-5px;
+    margin-right:-5px;
+    border-bottom-color:var(--social);
+}
+.tooltipped-s:after{
+    -webkit-transform:translateX(50%);
+    -ms-transform:translateX(50%);
+    transform:translateX(50%)
+}
