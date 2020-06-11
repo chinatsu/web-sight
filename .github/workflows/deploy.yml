@@ -14,5 +14,7 @@ jobs:
             script: |
                 cd ~/web-sight
                 git pull
-                cd
                 systemctl --user restart sight
+                cd
+                sleep 10
+                chown -R cn:www-data web-sight
