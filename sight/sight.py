@@ -1,8 +1,54 @@
-from elements import link, article, social
-from flask import Flask, render_template, send_from_directory
+from elements import link, article, social, Post
+from flask import Flask, render_template, jsonify, send_from_directory
 import random
+from misaka import Markdown, HtmlRenderer
+import os
+
+renderer = HtmlRenderer()
+md = Markdown(renderer, extensions=("fenced-code",))
+blogpath = "blog"
 
 app = Flask(__name__)
+
+socials = [
+    social("https://twitter.com/malpractitioner", "twitter", "my twitter profile"),
+    social(
+        "https://instagram.com/malpractitioner_", "instagram", "my instagram profile",
+    ),
+    social(
+        "cn#9999",
+        "discord",
+        "click to copy my discord username to clipboard",
+        copy=True,
+    ),
+    social("https://github.com/chinatsu", "github", "my github profile"),
+    social(
+        "https://codegolf.stackexchange.com/users/91616/chinatsu",
+        "stack-overflow",
+        "my codegolf profile on stackexchange",
+    ),
+    social("https://steamcommunity.com/id/lomg", "steam", "my steam profile"),
+    social("https://twitch.tv/cutenice", "twitch", "my twitch profile"),
+    social(
+        "https://soundcloud.com/uwaa", "soundcloud", "one of my soundcloud profiles"
+    ),
+    social(
+        "https://open.spotify.com/user/213p4w55e6upnsr73x6zbplya",
+        "spotify",
+        "my spotify profile",
+    ),
+    social(
+        "chinatsun",
+        "snapchat",
+        "click to copy my snapchat profile to clipboard",
+        copy=True,
+    ),
+]
+
+
+@app.route("/static/<file>")
+def serve(file):
+    return send_from_directory("files", file)
 
 
 @app.route("/")
@@ -47,40 +93,23 @@ def index():
         ),
         article("I play a lot of Tetris", "I have cleared 40 lines in 29.042 seconds"),
     ]
-    socials = [
-        social("https://twitter.com/malpractitioner", "twitter", "my twitter profile"),
-        social(
-            "https://instagram.com/malpractitioner_",
-            "instagram",
-            "my instagram profile",
-        ),
-        social(
-            "cn#9999",
-            "discord",
-            "click to copy my discord username to clipboard",
-            copy=True,
-        ),
-        social("https://github.com/chinatsu", "github", "my github profile"),
-        social(
-            "https://codegolf.stackexchange.com/users/91616/chinatsu",
-            "stack-overflow",
-            "my codegolf profile on stackexchange",
-        ),
-        social("https://steamcommunity.com/id/lomg", "steam", "my steam profile"),
-        social("https://twitch.tv/cutenice", "twitch", "my twitch profile"),
-        social(
-            "https://soundcloud.com/uwaa", "soundcloud", "one of my soundcloud profiles"
-        ),
-        social(
-            "https://open.spotify.com/user/213p4w55e6upnsr73x6zbplya",
-            "spotify",
-            "my spotify profile",
-        ),
-        social(
-            "chinatsun",
-            "snapchat",
-            "click to copy my snapchat profile to clipboard",
-            copy=True,
-        ),
-    ]
     return render_template("index.tpl", socials=socials, left=left, right=right)
+
+
+@app.route("/blog/")
+def blogindex():
+    posts = []
+    categories = [
+        d for d in os.listdir(blogpath) if os.path.isdir(os.path.join(blogpath, d))
+    ]
+
+    for category in categories:
+        for post in os.listdir(os.path.join(blogpath, category)):
+            if os.path.isfile((filepath := os.path.join(blogpath, category, post))):
+                posts.append(Post(post, category, os.path.getmtime(filepath)))
+
+    to_render = sorted(posts, key=lambda x: x.mtime, reverse=True)
+    for post in to_render:
+        with open(os.path.join(blogpath, post.category, post.name), "r") as f:
+            post.set_render(md(f.read()))
+    return render_template("blog.tpl", posts=to_render, socials=socials)

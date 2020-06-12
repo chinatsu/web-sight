@@ -52,9 +52,31 @@ p {
 }
 
 #header--left {
-    text-align: center;
     background: var(--fg);
+    color: var(--bg);
+    display: grid;
+    grid-auto-flow: column;
+    place-content: center;
     border-bottom: 1px solid var(--bg);
+}
+
+#header--left h1 {
+    padding: 0 2rem;
+}
+
+#header--left a {
+    text-decoration: none;
+    color: var(--social);
+}
+
+#header--left a:hover {
+    color: var(--link);
+}
+
+#header--left a:focus {
+    color: var(--link);
+    border: 2px solid var(--link);
+    margin: -2px;
 }
 
 #header--left p {
