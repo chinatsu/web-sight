@@ -105,7 +105,8 @@ def blogindex():
 
     for category in categories:
         for post in os.listdir(os.path.join(blogpath, category)):
-            if os.path.isfile((filepath := os.path.join(blogpath, category, post))):
+            filepath = os.path.join(blogpath, category, post)
+            if os.path.isfile(filepath):
                 posts.append(Post(post, category, os.path.getmtime(filepath)))
 
     to_render = sorted(posts, key=lambda x: x.mtime, reverse=True)
