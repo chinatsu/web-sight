@@ -91,7 +91,7 @@ def index():
             "I'm into mechanical keyboards",
             "although my daily driver is a Topre keyboard",
         ),
-        article("I play a lot of Tetris", "I have cleared 40 lines in 29.042 seconds"),
+        article("I play a lot of Tetris", "I have cleared 40 lines in 28.437 seconds"),
     ]
     return render_template("index.tpl", socials=socials, left=left, right=right)
 
