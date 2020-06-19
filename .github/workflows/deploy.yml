@@ -4,6 +4,10 @@ jobs:
         name: Deploy my web sight
         runs-on: ubuntu-latest
         steps:
+        - name: Checkout code
+          uses: actions/checkout@v2
+        - name: Lint codebase
+          uses: github/super-linter@v2.0.0
         - name: Pull changes and restart service
           uses: appleboy/ssh-action@master
           with:
