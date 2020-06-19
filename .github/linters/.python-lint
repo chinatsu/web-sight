@@ -1,1 +1,2 @@
-disable=import-error
+[IMPORTS]
+ignored-modules=flask,misaka
