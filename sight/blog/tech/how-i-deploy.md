@@ -28,14 +28,14 @@ run the processes with the `www-data` group. This is an important part, because 
 and requires read and write access to the UNIX socket to communicate with uWSGI. Running the service
 as my own user would make the socket owned by my user both as user and as group, leaving `www-data` as
 an "outsider" group attempting access. With `660` as the file mode, nginx would have neither read nor
-write access to the socket. I didn't want to open the file up completely either. Even adding my user to 
-the group did not yield any results, although with my user being a member of the group, I could 
+write access to the socket. I didn't want to open the file up completely either. Even adding my user to
+the group did not yield any results, although with my user being a member of the group, I could
 `chown` the socket after a service restart to give group ownership to `www-data`.
 
 I can't say I was particularly satisfied with this. The GitHub Action turned out to do a little more than
 I really wanted. The "working" sequence went something like this
 
-```
+```bash
 cd repo
 git pull
 systemctl --user restart website.service
@@ -59,10 +59,10 @@ with directions to restart the website service when run. In addition, I defined 
 which defines when to run the website-watcher *service*. I set the PathModified parameter to wait for changes
 in my repository's `.git/refs/head/master`.
 
-The result is that when the latest commit hash changes (`git pull`), that triggers a restart of my website service 
+The result is that when the latest commit hash changes (`git pull`), that triggers a restart of my website service
 through website-watcher. The GitHub action is then reduced to the following.
 
-```
+```bash
 cd repo
 git pull
 ```
