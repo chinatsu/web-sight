@@ -17,7 +17,7 @@ class Post:
     def __init__(self, name, category, mtime, rendered=None):
         self.name = name
         self.category = category
-        self.mtime = datetime.fromtimestamp(mtime)
+        self.ctime = datetime.fromtimestamp(mtime)
         self.rendered = rendered
 
     def set_render(self, render):
