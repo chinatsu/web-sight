@@ -15,7 +15,7 @@
     <section id="content">
     {% for post in posts %}
         <article>
-          <p class="posted">Last modified {{ post.mtime.strftime("%Y-%m-%d, %H:%M") }} in {{ post.category }}</p>
+          <p class="posted">Posted {{ post.ctime.strftime("%Y-%m-%d, %H:%M") }} in {{ post.category }}</p>
           {{ post.rendered }}
         </article>
     {% endfor %}
