@@ -1,5 +1,5 @@
 from elements import link, article, social, Post
-from flask import Flask, render_template, jsonify, send_from_directory
+from flask import Flask, render_template, jsonify, send_from_directory, abort
 import random
 from misaka import Markdown, HtmlRenderer
 import os
@@ -9,6 +9,12 @@ md = Markdown(renderer, extensions=("fenced-code",))
 blogpath = "blog"
 
 app = Flask(__name__)
+
+
+@app.errorhandler(404)
+def resource_not_found(e):
+    return jsonify(error=str(e)), 404
+
 
 socials = [
     social("https://twitter.com/malpractitioner", "twitter", "my twitter profile"),
@@ -109,7 +115,24 @@ def blogindex():
             if os.path.isfile(filepath):
                 posts.append(Post(post, category, os.path.getctime(filepath)))
 
-    to_render = sorted(posts, key=lambda x: x.mtime, reverse=True)
+    to_render = sorted(posts, key=lambda x: x.ctime, reverse=True)
+    for post in to_render:
+        with open(os.path.join(blogpath, post.category, post.name), "r") as f:
+            post.set_render(md(f.read()))
+    return render_template("blog.tpl", posts=to_render, socials=socials)
+
+
+@app.route("/blog/<category>/")
+def categoryindex(category):
+    posts = []
+    try:
+        for post in os.listdir(os.path.join(blogpath, category)):
+            filepath = os.path.join(blogpath, category, post)
+            if os.path.isfile(filepath):
+                posts.append(Post(post, category, os.path.getctime(filepath)))
+    except:
+        return abort(404, description="No such category")
+    to_render = sorted(posts, key=lambda x: x.ctime, reverse=True)
     for post in to_render:
         with open(os.path.join(blogpath, post.category, post.name), "r") as f:
             post.set_render(md(f.read()))
