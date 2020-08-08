@@ -77,11 +77,11 @@ def index():
     left = [
         article("I'm Kent", random.choice(greetings)),
         article(
-            "I'm a software developer at " + link("https://nav.no/", "Nav"),
+            f"I'm a software developer at {link('https://nav.no/', 'Nav')}",
             "the Norwegian Labour and Welfare Administration",
         ),
         article(
-            "I'm an admin at " + link("https://harddrop.com/", "HardDrop"),
+            f"I'm an admin at {link('https://harddrop.com/', 'HardDrop')}",
             "the largest Tetris community in the west",
         )
     ]
@@ -97,7 +97,10 @@ def index():
             "I'm into mechanical keyboards",
             "although my daily driver is a Topre keyboard",
         ),
-        article("I play a lot of Tetris", "I have cleared 40 lines in 28.437 seconds"),
+        article(
+            "I play a lot of Tetris",
+            f"I have cleared 40 lines in {link('https://jstris.jezevec10.com/replay/19342996', '28.397 seconds')}",
+        ),
     ]
     return render_template("index.tpl", socials=socials, left=left, right=right)
 
