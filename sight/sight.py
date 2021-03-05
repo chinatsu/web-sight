@@ -22,7 +22,7 @@ socials = [
         "https://instagram.com/malpractitioner_", "instagram", "my instagram profile",
     ),
     social(
-        "cn#9999",
+        "cn#4157",
         "discord",
         "click to copy my discord username to clipboard",
         copy=True,
@@ -36,7 +36,7 @@ socials = [
     social("https://steamcommunity.com/id/lomg", "steam", "my steam profile"),
     social("https://twitch.tv/cutenice", "twitch", "my twitch profile"),
     social(
-        "https://soundcloud.com/uwaa", "soundcloud", "one of my soundcloud profiles"
+        "https://soundcloud.com/malpractitioner", "soundcloud", "one of my soundcloud profiles"
     ),
     social(
         "https://open.spotify.com/user/213p4w55e6upnsr73x6zbplya",
