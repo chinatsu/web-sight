@@ -3,7 +3,7 @@ from datetime import datetime
 
 def social(link, icon, label, copy=False):
     if copy:
-        return f"<li><button class='btn' data-clipboard-text='{link} aria-label='{label}'><i class='ri-{icon}-fill'></i></button></li>"
+        return f"<li><button class='btn' data-clipboard-text='{link}' aria-label='{label}'><i class='ri-{icon}-fill'></i></button></li>"
     else:
         return f"<li><a href='{link}'' target='_blank' aria-label='{label}'><i class='ri-{icon}-fill'></i></a></li>"
 
