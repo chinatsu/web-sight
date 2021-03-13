@@ -80,10 +80,6 @@ def index():
             f"I'm a software developer at {link('https://nav.no/', 'Nav')}",
             "the Norwegian Labour and Welfare Administration",
         ),
-        article(
-            f"I'm an admin at {link('https://harddrop.com/', 'HardDrop')}",
-            "the largest Tetris community in the west",
-        )
     ]
     right = [
         article(
