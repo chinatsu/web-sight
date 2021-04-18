@@ -95,7 +95,7 @@ def index():
         ),
         article(
             "I play a lot of Tetris",
-            f"I have cleared 40 lines in {link('https://jstris.jezevec10.com/replay/19342996', '28.397 seconds')}",
+            f"I have cleared 40 lines in {link('https://www.youtube.com/watch?v=yzoaROBG7MI', '27.948 seconds')}",
         ),
     ]
     return render_template("index.tpl", socials=socials, left=left, right=right)
