@@ -56,7 +56,7 @@ p {
     color: var(--bg);
     display: grid;
     grid-auto-flow: column; 
-    place-content: center;
+    place-content: space-around;
     border-bottom: 1px solid var(--bg);
 }
 
@@ -159,6 +159,7 @@ p {
 
     #header--left {
         border-bottom: 0px;
+        place-content: center;
     }
     #header--right button {
         font-size: 2rem;
