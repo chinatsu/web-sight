@@ -10,7 +10,7 @@ body {
     margin: 0;
     font-family: 'Poppins', 'sans-serif';
     font-size: 2rem;
-    grid-template-rows: 1fr 12fr 12fr 2fr;
+    grid-template-rows: 1fr 12fr 12fr 3fr;
     grid-template-areas:
         "left-header"
         "left-main"
@@ -34,7 +34,7 @@ a:focus {
 }
 
 h1,h2 {
-    font-size: 2rem;
+    font-size: 2.25rem;
     font-weight: 400;
     margin-bottom: 0;
 }
@@ -47,7 +47,7 @@ article {
 p {
     padding: 0 5%;
     text-align: center;
-    font-size: 1rem;
+    font-size: 1.25rem;
     margin-top: 0;
 }
 
@@ -56,7 +56,7 @@ p {
     color: var(--bg);
     display: grid;
     grid-auto-flow: column;
-    place-content: space-around;
+    place-content: center;
     border-bottom: 1px solid var(--bg);
 }
 
@@ -91,8 +91,10 @@ p {
 #header--right ul {
     display: grid;
     grid-auto-flow: column;
-    align-content: center;
-    font-size: 4rem;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: 1fr 1fr;
+    place-items: center;
+    font-size: 6rem;
 }
 
 #header--right a {
@@ -103,7 +105,7 @@ p {
 #header--right button {
     background: none!important;
     border: none;
-    font-size: 4rem;
+    font-size: 6rem;
     padding: 0!important;
     color: var(--social);
     cursor: pointer;
@@ -144,7 +146,7 @@ p {
 @media screen and (orientation:landscape) {
     body {
         grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: 3em auto;
+        grid-template-rows: 5em auto;
         grid-template-areas:
             "left-header right-header"
             "left-main right-main";

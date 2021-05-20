@@ -49,6 +49,16 @@ socials = [
         "click to copy my snapchat profile to clipboard",
         copy=True,
     ),
+    social(
+        "https://www.linkedin.com/in/malpractitioner/",
+        "linkedin-box",
+        "my linkedin profile"
+    ),
+    social(
+        "https://www.discogs.com/user/cn_",
+        "disc",
+        "my discogs profile"
+    )
 ]
 
 names = ["Kent", "cn"]
@@ -62,7 +72,7 @@ def serve(file):
 @app.route("/")
 def index():
     genres = [
-        link("https://www.youtube.com/playlist?list=PLtkWCVwDMTaO9QpDRitXWw1jasj-6uiwE", "korean indie music",
+        link("https://www.youtube.com/playlist?list=PLtkWCVwDMTaO9QpDRitXWw1jasj-6uiwE", "korean indie music"),
         "post-rock",
         "sludge metal",
         "the last concert you attended",
