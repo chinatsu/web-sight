@@ -55,13 +55,13 @@ p {
     background: var(--fg);
     color: var(--bg);
     display: grid;
-    grid-auto-flow: column;
+    grid-auto-flow: column; 
     place-content: center;
     border-bottom: 1px solid var(--bg);
 }
 
 #header--left h1 {
-    padding: 0 2rem;
+    margin: 1vw
 }
 
 #header--left a {
