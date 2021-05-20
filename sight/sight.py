@@ -51,6 +51,8 @@ socials = [
     ),
 ]
 
+names = ["Kent", "cn"]
+
 
 @app.route("/static/<file>")
 def serve(file):
@@ -60,7 +62,7 @@ def serve(file):
 @app.route("/")
 def index():
     genres = [
-        "korean indie music",
+        link("https://www.youtube.com/playlist?list=PLtkWCVwDMTaO9QpDRitXWw1jasj-6uiwE", "korean indie music",
         "post-rock",
         "sludge metal",
         "the last concert you attended",
@@ -75,23 +77,23 @@ def index():
     ]
     greetings = ["hello", "what up"]
     left = [
-        article("I'm Kent", random.choice(greetings)),
+        article(f"I'm {random.choice(names)}", random.choice(greetings)),
         article(
-            f"I'm a software developer at {link('https://nav.no/', 'Nav')}",
-            "the Norwegian Labour and Welfare Administration",
+            f"I develop software at {link('https://nais.io/', 'NAIS')}",
+            f"{link('https://www.nav.no/en/home', 'NAV')}'s Application Infrastructure Service",
         ),
     ]
     right = [
         article(
             "I like Python and Rust",
-            "I primarily use Kotlin and TypeScript/React at work",
+            "I primarily use Go and god knows what else at work",
         ),
         article(
-            "I like music a lot", f"you can talk to me about {random.choice(genres)}"
+            f"I like music a lot", f"you can talk to me about {random.choice(genres)}"
         ),
         article(
             "I'm into mechanical keyboards",
-            "although my daily driver is a Topre keyboard",
+            f"I use a {link('https://keyhive.xyz/shop/ut472-kit', 'UT47.2')} with lubed {link('https://splitkb.com/products/gazzew-boba-u4-silent-tactile-switch', 'Gazzew Boba U4')} switches, and {link('https://novelkeys.xyz/products/kat-lich-gb', 'KAT Lich')} keycaps. It looks like {link('https://twitter.com/malpractitioner/status/1384571485658959873', 'this')}",
         ),
         article(
             "I play a lot of Tetris",
