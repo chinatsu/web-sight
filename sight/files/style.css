@@ -61,12 +61,7 @@ p {
 }
 
 #header--left h1 {
-    justify-self: end;
-    margin: 15px;
-}
-
-#header--left h1:last-child {
-    justify-self: start;
+    justify-self: center;
 }
 
 #header--left a {
@@ -167,6 +162,15 @@ p {
     }
     #header--right button {
         font-size: 2rem;
+    }
+
+    #header--left h1 {
+        justify-self: end;
+        margin: 15px;
+    }
+    
+    #header--left h1:last-child {
+        justify-self: start;
     }
 
 }
