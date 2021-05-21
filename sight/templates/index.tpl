@@ -12,7 +12,7 @@
   </head>
   <body>
     <header id="header--left">
-        <h1>viridescent<span><a href="/blog">blog</a></span></h1>
+        <h1>viridescent<!-- <span><a href="/blog">blog</a></span> --></h1>
     </header>
     <header id="header--right">
         <nav>
