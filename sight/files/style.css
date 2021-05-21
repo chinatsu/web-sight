@@ -55,13 +55,18 @@ p {
     background: var(--fg);
     color: var(--bg);
     display: grid;
-    grid-auto-flow: column; 
-    place-content: space-around;
+    grid-template-columns: 1fr 1fr; 
     border-bottom: 1px solid var(--bg);
+    place-items: center;
 }
 
 #header--left h1 {
+    justify-self: end;
     margin: 15px;
+}
+
+#header--left h1:last-child {
+    justify-self: start;
 }
 
 #header--left a {
@@ -159,7 +164,6 @@ p {
 
     #header--left {
         border-bottom: 0px;
-        place-content: center;
     }
     #header--right button {
         font-size: 2rem;
