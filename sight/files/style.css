@@ -54,14 +54,13 @@ p {
 #header--left {
     background: var(--fg);
     color: var(--bg);
-    display: grid;
-    grid-template-columns: 1fr 1fr; 
-    border-bottom: 1px solid var(--bg);
-    place-items: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-#header--left h1 {
-    justify-self: center;
+#header--left h1 span {
+    margin-left: 15px
 }
 
 #header--left a {
@@ -162,15 +161,6 @@ p {
     }
     #header--right button {
         font-size: 2rem;
-    }
-
-    #header--left h1 {
-        justify-self: end;
-        margin: 15px;
-    }
-    
-    #header--left h1:last-child {
-        justify-self: start;
     }
 
 }

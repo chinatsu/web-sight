@@ -11,7 +11,9 @@
     <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
   </head>
   <body>
-    <header id="header--left"><h1>viridescent</h1><h1><a href="/blog">blog</a></h1></header>
+    <header id="header--left">
+        <h1>viridescent<span><a href="/blog">blog</a></span></h1>
+    </header>
     <header id="header--right">
         <nav>
             <ul>
