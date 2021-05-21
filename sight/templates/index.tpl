@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="language" content="english">
     <meta name="description" content="my personal website">
+    <meta name="viewport" content="width=device-width">
     <title>viridescent</title>
     <link rel="stylesheet" type="text/css" href="/static/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600&family=Poppins&display=swap" rel="stylesheet">

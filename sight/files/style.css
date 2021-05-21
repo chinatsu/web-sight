@@ -10,7 +10,7 @@ body {
     margin: 0;
     font-family: 'Poppins', 'sans-serif';
     font-size: 18px;
-    grid-template-rows: 1fr 12fr 12fr 3fr;
+    grid-template-rows: auto 120vh 120vh 1fr;
     grid-template-areas:
         "left-header"
         "left-main"
@@ -100,6 +100,7 @@ p {
     grid-template-rows: 1fr 1fr;
     place-items: center;
     font-size: 6rem;
+    padding: 0;
 }
 
 #header--right a {
