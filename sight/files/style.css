@@ -10,7 +10,7 @@ body {
     margin: 0;
     font-family: 'Poppins', 'sans-serif';
     font-size: 18px;
-    grid-template-rows: auto 120vh 120vh 1fr;
+    grid-template-rows: 1fr 10fr 10fr auto;
     grid-template-areas:
         "left-header"
         "left-main"
@@ -36,7 +36,7 @@ a:focus {
 h1 {
     font-size: 2.25rem;
     font-weight: 400;
-    margin-bottom: 0;
+    margin: 0;
 }
 
 h2 {
@@ -61,7 +61,6 @@ p {
     background: var(--fg);
     color: var(--bg);
     display: flex;
-    align-items: center;
     justify-content: center;
 }
 
@@ -95,12 +94,10 @@ p {
 
 #header--right ul {
     display: grid;
-    grid-auto-flow: column;
-    grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: 1fr 1fr;
-    place-items: center;
+    grid-template-columns: repeat(auto-fill, minmax(8.5rem, max-content));;
+    place-content: center;
     font-size: 6rem;
-    padding: 0;
+    margin: 0;
 }
 
 #header--right a {
@@ -152,7 +149,7 @@ p {
 @media screen and (orientation:landscape) {
     body {
         grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: 8em auto;
+        grid-template-rows: 1fr 33fr;
         grid-template-areas:
             "left-header right-header"
             "left-main right-main";
@@ -160,14 +157,15 @@ p {
     }
 
     #header--right ul {
-        font-size: 2rem;
+        font-size: 3rem;
+    }
+    
+    #header--right button {
+        font-size: 3rem;
     }
 
     #header--left {
         border-bottom: 0px;
-    }
-    #header--right button {
-        font-size: 2rem;
     }
 
 }
