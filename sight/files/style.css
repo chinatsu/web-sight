@@ -21,6 +21,7 @@ main {
     "left-secondary"
     "right-secondary";
     overflow-y: scroll;
+    scroll-behavior: smooth;
     scroll-snap-type: y mandatory;
 }
 
@@ -122,6 +123,7 @@ p {
     -webkit-transform: translate(-50%, 0%) rotate(45deg);
     -moz-transform: translate(-50%, 0%) rotate(45deg);
     transform: translate(-50%, 0%) rotate(45deg);
+    cursor: pointer;
   }
 
 

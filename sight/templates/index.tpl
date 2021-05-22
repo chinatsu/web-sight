@@ -43,5 +43,12 @@
             }
         }
     }
+
+    arrow.onclick = function (evt) {
+        wrapper.scrollBy({
+            top: window.innerHeight,
+            behaviour: "smooth"
+            });
+    }
   </script>
 </html>
