@@ -29,7 +29,7 @@ section {
 h1 {
     font-size: 2.25rem;
     font-weight: 400;
-    padding: 2.25rem;
+    padding: 2.25rem 0;
     margin: 0;
     color: var(--social);
 }
@@ -89,6 +89,7 @@ p {
 .content section {
     align-content: center;
     margin-top: -5rem; /* compensation :( */
+    padding: 0;
 }
 
 .undecorated {
