@@ -39,7 +39,7 @@ socials_right = [
         "https://soundcloud.com/malpractitioner",
         "soundcloud",
         "Me on SoundCloud",
-        "One of my accounts"
+        "I have others too, but this one's the most recently active"
     ),
     social(
         "https://open.spotify.com/user/213p4w55e6upnsr73x6zbplya",
