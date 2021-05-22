@@ -1,8 +1,27 @@
 :root {
     --fg: #081c15;
     --bg: #d8f3dc;
-    --social: #52b788;
-    --link: #40916c;
+    --link: #275640;
+    --focus: #1B8754;
+    --fg-secondary: var(--bg);
+    --bg-secondary: var(--fg);
+    --link-secondary: #40916c;
+    --focus-secondary: #52b788;
+    --header: #008E49;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --fg: #d8f3dc;
+        --bg: #000F0A;
+        --link: #23CE7E;
+        --focus: #00B560;
+        --header: #00CC3D;
+        --fg-secondary: var(--fg);
+        --bg-secondary: var(--bg);
+        --link-secondary: var(--link);
+        --focus-secondary: var(--focus);
+    }
 }
 
 body {
@@ -31,7 +50,7 @@ h1 {
     font-weight: 400;
     padding: 2.25rem 0;
     margin: 0;
-    color: var(--social);
+    color: var(--header);
 }
 
 h2 {
@@ -60,17 +79,13 @@ a {
 }
 
 a:hover {
-    color: var(--social);
+    color: var(--focus);
 }
 
 a:focus {
-    border: 2px solid var(--social);
+    border: 2px solid var(--focus);
     margin: -2px;
-    color: var(--social);
-    text-decoration: none;
-}
-
-.entry {
+    color: var(--focus);
     text-decoration: none;
 }
 
@@ -102,8 +117,16 @@ p {
 }
 
 .secondary {
-    color: var(--bg);
-    background: var(--fg);
+    color: var(--fg-secondary);
+    background: var(--bg-secondary);
+}
+
+.secondary a {
+    color: var(--link-secondary);
+}
+
+.secondary a:hover, .secondary a:focus {
+    color: var(--focus-secondary);
 }
 
 #scroll-down {
@@ -111,14 +134,20 @@ p {
     right: 2.25rem;
     bottom: 2.25rem;
     display: block;
+    background: transparent;
     z-index: 100;
     width: 1rem;
     height: 1rem;
-    border-bottom: 2px solid var(--social);
-    border-right: 2px solid var(--social);
+    border: 0;
+    border-bottom: 2px solid var(--link);
+    border-right: 2px solid var(--link);
     -webkit-transform: translate(-50%, 0%) rotate(45deg);
     transform: translate(-50%, 0%) rotate(45deg);
     cursor: pointer;
+}
+
+#scroll-down:focus, #scroll-down:hover {
+    border-color: var(--focus)
 }
 
 .fade-out {

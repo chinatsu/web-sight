@@ -12,7 +12,6 @@
   </head>
   <body>
     <main id="scroll-container">
-        <div id="scroll-down"></div>
         <section class="content primary">
             <header><h1>viridescent<!-- <span><a href="/blog">blog</a></span> --></h1></header>
             <section>
@@ -25,6 +24,7 @@
                 {% for article in right %}{{ article }}{% endfor %}
             </section>
         </section>
+        <button id="scroll-down" aria-label="Scroll down"></button>
         <section class="centered secondary">
             {% for social in socials_left %}{{ social }}{% endfor %}
         </section>
