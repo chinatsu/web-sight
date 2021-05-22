@@ -26,7 +26,7 @@ main {
 }
 
 section {
-    scroll-snap-align: center;
+    scroll-snap-align: end;
     height: 100vh;
 }
 
@@ -43,16 +43,6 @@ a:focus {
     margin: -2px;
     color: var(--social);
     text-decoration: none;
-}
-
-h1 {
-    font-size: 2.25rem;
-    font-weight: 400;
-    margin: 0;
-    padding: 2.25rem;
-    position: absolute;
-    top: 0;
-    color: var(--social);
 }
 
 h2 {
@@ -76,16 +66,32 @@ p {
     display: grid;
     color: var(--bg);
     background: var(--fg);
+    grid-area: left-main; 
+    grid-template-rows: 5rem auto;
+}
+
+#content--left section, #content--right section {
+    display: grid;
     align-content: center;
-    grid-area: left-main;
+    height: unset;
+    margin-top: -10rem; /* compensation :( */
+}
+
+
+#content--left h1 {
+    font-size: 2.25rem;
+    font-weight: 400;
+    padding: 2.25rem;
+    margin:0;
+    color: var(--social);
 }
 
 #content--right {
+    display: grid;
+    grid-area: right-main; 
+    grid-template-rows: 5rem auto;
     background: var(--bg);
     color: var(--fg);
-    display: grid;
-    align-content: center;
-    grid-area: right-main;
 }
 
 #content--socials {

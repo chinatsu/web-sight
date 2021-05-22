@@ -15,10 +15,15 @@
         <div id="scroll-down"></div>
         <section id="content--left">
             <header><h1>viridescent<!-- <span><a href="/blog">blog</a></span> --></h1></header>
-            {% for article in left %}{{ article }}{% endfor %}
+            <section>
+                {% for article in left %}{{ article }}{% endfor %}
+            </section>
         </section>
         <section id="content--right">
-            {% for article in right %}{{ article }}{% endfor %}
+            <header></header>
+            <section>
+                {% for article in right %}{{ article }}{% endfor %}
+             </section>
         </section>
         <section id="content--socials">
             {% for social in socials_left %}{{ social }}{% endfor %}
