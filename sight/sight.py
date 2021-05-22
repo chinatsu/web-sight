@@ -16,49 +16,49 @@ def resource_not_found(e):
     return jsonify(error=str(e)), 404
 
 
-socials = [
-    social("https://twitter.com/malpractitioner", "twitter", "my twitter profile"),
+socials_left = [
+    social("https://twitter.com/malpractitioner", "twitter", "Me on Twitter", "I'm probably the most active here"),
     social(
-        "https://instagram.com/malpractitioner_", "instagram", "my instagram profile",
+        "https://instagram.com/malpractitioner_", "instagram", "Me on Instagram", "Primarily for food, music and keyboard stories",
     ),
+    social("https://github.com/chinatsu", "github", "Me on GitHub", "Work and hobby projects"),
+
+    social("https://steamcommunity.com/id/lomg", "steam", "Me on Steam", "I play Rocket League.. and that's about it"),
     social(
-        "cn#4157",
-        "discord",
-        "click to copy my discord username to clipboard",
-        copy=True,
+        "https://www.linkedin.com/in/malpractitioner/",
+        "linkedin-box",
+        "Me on LinkedIn",
+        "Typically used to respond to headhunters, not much else"
     ),
-    social("https://github.com/chinatsu", "github", "my github profile"),
+
+]
+
+socials_right = [
+    social("https://twitch.tv/cutenice", "twitch", "Me on Twitch", "I used to stream a bit, but not so much anymore"),
     social(
-        "https://codegolf.stackexchange.com/users/91616/chinatsu",
-        "stack-overflow",
-        "my codegolf profile on stackexchange",
-    ),
-    social("https://steamcommunity.com/id/lomg", "steam", "my steam profile"),
-    social("https://twitch.tv/cutenice", "twitch", "my twitch profile"),
-    social(
-        "https://soundcloud.com/malpractitioner", "soundcloud", "one of my soundcloud profiles"
+        "https://soundcloud.com/malpractitioner",
+        "soundcloud",
+        "Me on SoundCloud",
+        "One of my accounts"
     ),
     social(
         "https://open.spotify.com/user/213p4w55e6upnsr73x6zbplya",
         "spotify",
-        "my spotify profile",
-    ),
-    social(
-        "chinatsun",
-        "snapchat",
-        "click to copy my snapchat profile to clipboard",
-        copy=True,
-    ),
-    social(
-        "https://www.linkedin.com/in/malpractitioner/",
-        "linkedin-box",
-        "my linkedin profile"
+        "Me on Spotify",
+        "My primary source for music"
     ),
     social(
         "https://www.discogs.com/user/cn_",
         "disc",
-        "my discogs profile"
-    )
+        "Me on Discogs",
+        "Used to document my physical music collection"
+    ),
+    social(
+        "https://codegolf.stackexchange.com/users/91616/chinatsu",
+        "stack-overflow",
+        "Me on StackExchange",
+        "Rarely active, mostly for golfing code"
+    ),
 ]
 
 names = ["Kent", "cn"]
@@ -110,7 +110,7 @@ def index():
             f"I have cleared 40 lines in {link('https://www.youtube.com/watch?v=yzoaROBG7MI', '27.948 seconds')}",
         ),
     ]
-    return render_template("index.tpl", socials=socials, left=left, right=right)
+    return render_template("index.tpl", socials_left=socials_left, socials_right=socials_right, left=left, right=right)
 
 
 @app.route("/blog/")

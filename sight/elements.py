@@ -1,11 +1,8 @@
 from datetime import datetime
 
 
-def social(link, icon, label, copy=False):
-    if copy:
-        return f"<li><button class='btn' data-clipboard-text='{link}' aria-label='{label}'><i class='ri-{icon}-fill'></i></button></li>"
-    else:
-        return f"<li><a href='{link}'' target='_blank' aria-label='{label}'><i class='ri-{icon}-fill'></i></a></li>"
+def social(link, icon, label, description):
+        return f"<article><a href='{link}' target='_blank' aria-label='{label}'><i class='ri-{icon}-fill'></i> {label}</a><p>{description}</p></article>"
 
 
 article = lambda title, subtitle: f"<article><h2>{title}</h2><p>{subtitle}<p></article>"
