@@ -23,7 +23,7 @@
             <header></header>
             <section>
                 {% for article in right %}{{ article }}{% endfor %}
-             </section>
+            </section>
         </section>
         <section class="centered secondary">
             {% for social in socials_left %}{{ social }}{% endfor %}

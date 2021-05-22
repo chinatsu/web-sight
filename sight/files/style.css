@@ -20,18 +20,47 @@ main {
 }
 
 section {
+    display: grid;
     scroll-snap-align: end;
     height: 100vh;
+    padding: 0 2.25rem;
+}
+
+h1 {
+    font-size: 2.25rem;
+    font-weight: 400;
+    padding: 2.25rem;
+    margin: 0;
+    color: var(--social);
+}
+
+h2 {
+    font-weight: 400;
+    margin-bottom: 0;
+    font-size: 1.1rem;
+}
+
+@media screen and (orientation:landscape) {
+    main {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: unset;
+    }
+
+    article {
+        width: 100%;
+        font-size: 1.25rem;
+    }
+    h2 {
+        font-size: 1.75rem;
+    }
 }
 
 a {
     color: var(--link);
-    text-decoration: underline;
 }
 
 a:hover {
     color: var(--social);
-    text-decoration: underline;
 }
 
 a:focus {
@@ -43,55 +72,27 @@ a:focus {
 
 .entry {
     text-decoration: none;
-    padding: 0 2.25rem;
-}
-
-h2 {
-    font-weight: 400;
-    margin-bottom: 0;
-    padding: 0 2.25rem;
-    font-size: 1.1rem;
-}
-
-article {
-    width: 100%;
-    font-size: 1rem;
 }
 
 p {
-    padding: 0 2.25rem;
     margin-top: 0;
 }
 
-
-header h1 {
-    font-size: 2.25rem;
-    font-weight: 400;
-    padding: 2.25rem;
-    margin:0;
-    color: var(--social);
-}
-
-
-.undecorated {
-    text-decoration: none;
-}
-
 .centered {
-    display: grid;
     align-content: center;
 }
 
 .content {
-    display: grid;
     grid-template-rows: 5rem auto;
 }
 
 .content section {
-    display: grid;
     align-content: center;
-    height: unset;
-    margin-top: -10rem; /* compensation :( */
+    margin-top: -5rem; /* compensation :( */
+}
+
+.undecorated {
+    text-decoration: none;
 }
 
 .primary {
@@ -110,16 +111,21 @@ header h1 {
     bottom: 2.25rem;
     display: block;
     z-index: 100;
-    text-shadow: 0;
     width: 1rem;
     height: 1rem;
     border-bottom: 2px solid var(--social);
     border-right: 2px solid var(--social);
     -webkit-transform: translate(-50%, 0%) rotate(45deg);
-    -moz-transform: translate(-50%, 0%) rotate(45deg);
     transform: translate(-50%, 0%) rotate(45deg);
     cursor: pointer;
-  }
+}
+
+.fade-out {
+    opacity: 0;
+    -moz-animation   : fade 0.5s ease-out !important;
+    -webkit-animation: fade 0.5s ease-out !important;
+    animation        : fade 0.5s ease-out !important;
+}
 
 
 @keyframes fade {
@@ -140,27 +146,4 @@ header h1 {
     100% {
         opacity: 0;
     }
-}
-
-.fade-out {
-    opacity: 0;
-    -moz-animation   : fade 0.5s ease-out !important;
-    -webkit-animation: fade 0.5s ease-out !important;
-    animation        : fade 0.5s ease-out !important;
-}
-
-@media screen and (orientation:landscape) {
-    main {
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: unset;
-    }
-
-    article {
-        width: 100%;
-        font-size: 1.25rem;
-    }
-    h2 {
-        font-size: 1.75rem;
-    }
-
 }
