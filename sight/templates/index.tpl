@@ -45,10 +45,7 @@
     }
 
     arrow.onclick = function (evt) {
-        wrapper.scrollBy({
-            top: window.innerHeight,
-            behaviour: "smooth"
-            });
+        wrapper.scrollBy(0, window.innerHeight);
     }
   </script>
 </html>
