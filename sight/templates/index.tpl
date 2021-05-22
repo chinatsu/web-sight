@@ -13,22 +13,22 @@
   <body>
     <main id="scroll-container">
         <div id="scroll-down"></div>
-        <section id="content--left">
+        <section class="content primary">
             <header><h1>viridescent<!-- <span><a href="/blog">blog</a></span> --></h1></header>
             <section>
                 {% for article in left %}{{ article }}{% endfor %}
             </section>
         </section>
-        <section id="content--right">
+        <section class="content secondary">
             <header></header>
             <section>
                 {% for article in right %}{{ article }}{% endfor %}
              </section>
         </section>
-        <section id="content--socials">
+        <section class="centered secondary">
             {% for social in socials_left %}{{ social }}{% endfor %}
         </section>
-        <section id="content--whatever">
+        <section class="centered primary">
             {% for social in socials_right %}{{ social }}{% endfor %}
         </section>
     </main>

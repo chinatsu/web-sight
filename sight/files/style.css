@@ -1,6 +1,6 @@
 :root {
-    --bg: #081c15;
-    --fg: #d8f3dc;
+    --fg: #081c15;
+    --bg: #d8f3dc;
     --social: #52b788;
     --link: #40916c;
 }
@@ -13,13 +13,7 @@ body {
 
 main {
     display: grid;
-    grid-template-rows: repeat(4, 1fr);
     height: 100vh;
-    grid-template-areas:
-    "left-main"
-    "right-main"
-    "left-secondary"
-    "right-secondary";
     overflow-y: scroll;
     scroll-behavior: smooth;
     scroll-snap-type: y mandatory;
@@ -32,10 +26,12 @@ section {
 
 a {
     color: var(--link);
+    text-decoration: underline;
 }
 
 a:hover {
     color: var(--social);
+    text-decoration: underline;
 }
 
 a:focus {
@@ -43,6 +39,11 @@ a:focus {
     margin: -2px;
     color: var(--social);
     text-decoration: none;
+}
+
+.entry {
+    text-decoration: none;
+    padding: 0 2.25rem;
 }
 
 h2 {
@@ -62,23 +63,8 @@ p {
     margin-top: 0;
 }
 
-#content--left {
-    display: grid;
-    color: var(--bg);
-    background: var(--fg);
-    grid-area: left-main; 
-    grid-template-rows: 5rem auto;
-}
 
-#content--left section, #content--right section {
-    display: grid;
-    align-content: center;
-    height: unset;
-    margin-top: -10rem; /* compensation :( */
-}
-
-
-#content--left h1 {
+header h1 {
     font-size: 2.25rem;
     font-weight: 400;
     padding: 2.25rem;
@@ -86,33 +72,36 @@ p {
     color: var(--social);
 }
 
-#content--right {
-    display: grid;
-    grid-area: right-main; 
-    grid-template-rows: 5rem auto;
-    background: var(--bg);
-    color: var(--fg);
-}
 
-#content--socials {
-    background: var(--bg);
-    color: var(--fg);
-    display: grid;
-    align-content: center;
-    grid-area: left-secondary;
-}
-
-#content--socials a, #content--whatever a {
-    padding: 0 2.25rem;
+.undecorated {
     text-decoration: none;
 }
 
-#content--whatever {
+.centered {
     display: grid;
+    align-content: center;
+}
+
+.content {
+    display: grid;
+    grid-template-rows: 5rem auto;
+}
+
+.content section {
+    display: grid;
+    align-content: center;
+    height: unset;
+    margin-top: -10rem; /* compensation :( */
+}
+
+.primary {
+    color: var(--fg);
+    background: var(--bg);
+}
+
+.secondary {
     color: var(--bg);
     background: var(--fg);
-    align-content: center;
-    grid-area: right-secondary;
 }
 
 #scroll-down {
@@ -163,10 +152,7 @@ p {
 @media screen and (orientation:landscape) {
     main {
         grid-template-columns: 1fr 1fr;
-        grid-template-rows: 1fr 1fr;
-        grid-template-areas:
-            "left-main right-main"
-            "left-secondary right-secondary";
+        grid-template-rows: unset;
     }
 
     article {
