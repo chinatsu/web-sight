@@ -17,47 +17,68 @@ def resource_not_found(e):
 
 
 socials_left = [
-    social("https://twitter.com/malpractitioner", "twitter", "Me on Twitter", "I'm probably the most active here"),
     social(
-        "https://instagram.com/malpractitioner_", "instagram", "Me on Instagram", "Primarily for food, music and keyboard stories",
+        "https://twitter.com/malpractitioner",
+        "twitter",
+        "Me on Twitter",
+        "I'm probably the most active here",
     ),
-    social("https://github.com/chinatsu", "github", "Me on GitHub", "Work and hobby projects"),
-
-    social("https://steamcommunity.com/id/lomg", "steam", "Me on Steam", "I play Rocket League.. and that's about it"),
+    social(
+        "https://instagram.com/malpractitioner_",
+        "instagram",
+        "Me on Instagram",
+        "Primarily for food, music and keyboard stories",
+    ),
+    social(
+        "https://github.com/chinatsu",
+        "github",
+        "Me on GitHub",
+        "Work and hobby projects",
+    ),
+    social(
+        "https://steamcommunity.com/id/lomg",
+        "steam",
+        "Me on Steam",
+        "I play Rocket League.. and that's about it",
+    ),
     social(
         "https://www.linkedin.com/in/malpractitioner/",
         "linkedin-box",
         "Me on LinkedIn",
-        "Typically used to respond to headhunters, not much else"
+        "Typically used to respond to headhunters, not much else",
     ),
-
 ]
 
 socials_right = [
-    social("https://twitch.tv/cutenice", "twitch", "Me on Twitch", "I used to stream a bit, but not so much anymore"),
+    social(
+        "https://twitch.tv/cutenice",
+        "twitch",
+        "Me on Twitch",
+        "I used to stream a bit, but not so much anymore",
+    ),
     social(
         "https://soundcloud.com/malpractitioner",
         "soundcloud",
         "Me on SoundCloud",
-        "I have other accounts too, but this one's the most recently active"
+        "I have other accounts too, but this one's the most recently active",
     ),
     social(
         "https://open.spotify.com/user/213p4w55e6upnsr73x6zbplya",
         "spotify",
         "Me on Spotify",
-        "My primary source for music"
+        "My primary source for music",
     ),
     social(
         "https://www.discogs.com/user/cn_",
         "disc",
         "Me on Discogs",
-        "Used to document my physical music collection"
+        "Used to document my physical music collection",
     ),
     social(
         "https://codegolf.stackexchange.com/users/91616/chinatsu",
         "stack-overflow",
         "Me on StackExchange",
-        "Rarely active, mostly for golfing code"
+        "Rarely active, mostly for golfing code",
     ),
 ]
 
@@ -72,7 +93,10 @@ def serve(file):
 @app.route("/")
 def index():
     genres = [
-        link("https://www.youtube.com/playlist?list=PLtkWCVwDMTaO9QpDRitXWw1jasj-6uiwE", "korean indie music"),
+        link(
+            "https://www.youtube.com/playlist?list=PLtkWCVwDMTaO9QpDRitXWw1jasj-6uiwE",
+            "korean indie music",
+        ),
         "post-rock",
         "sludge metal",
         "the last concert you attended",
@@ -110,14 +134,23 @@ def index():
             f"I have cleared 40 lines in {link('https://www.youtube.com/watch?v=sNkVBprghyQ', '27.878 seconds')}",
         ),
     ]
-    return render_template("index.tpl", socials_left=socials_left, socials_right=socials_right, left=left, right=right)
+    return render_template(
+        "index.tpl",
+        socials_left=socials_left,
+        socials_right=socials_right,
+        left=left,
+        right=right,
+    )
 
 
 @app.route("/blog/")
 def blogindex():
     posts = []
+    print(os.path.join(os.getcwd(), blogpath))
     categories = [
-        d for d in os.listdir(blogpath) if os.path.isdir(os.path.join(blogpath, d))
+        d
+        for d in os.listdir(blogpath)
+        if os.path.isdir(os.path.join(os.getcwd(), blogpath, d))
     ]
 
     for category in categories:
@@ -130,7 +163,7 @@ def blogindex():
     for post in to_render:
         with open(os.path.join(blogpath, post.category, post.name), "r") as f:
             post.set_render(md(f.read()))
-    return render_template("blog.tpl", posts=to_render, socials=socials)
+    return render_template("blog.tpl", posts=to_render)
 
 
 @app.route("/blog/<category>/")
@@ -147,4 +180,4 @@ def categoryindex(category):
     for post in to_render:
         with open(os.path.join(blogpath, post.category, post.name), "r") as f:
             post.set_render(md(f.read()))
-    return render_template("blog.tpl", posts=to_render, socials=socials)
+    return render_template("blog.tpl", posts=to_render)
