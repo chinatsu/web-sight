@@ -131,7 +131,7 @@ def index():
         ),
         article(
             "I play a lot of Tetris",
-            f"I have cleared 40 lines in {link('https://www.youtube.com/watch?v=sNkVBprghyQ', '27.878 seconds')}",
+            f"I have cleared 40 lines in {link('https://www.youtube.com/watch?v=4BE9O9t3k2Q', '26.513 seconds')}",
         ),
     ]
     return render_template(
