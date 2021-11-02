@@ -1,12 +1,6 @@
-from elements import link, article, social, Post
-from flask import Flask, render_template, jsonify, send_from_directory, abort
+from elements import link, article, social
+from flask import Flask, render_template, jsonify, send_from_directory
 import random
-from misaka import Markdown, HtmlRenderer
-import os
-
-renderer = HtmlRenderer()
-md = Markdown(renderer, extensions=("fenced-code",))
-blogpath = "blog"
 
 app = Flask(__name__)
 
@@ -19,32 +13,27 @@ def resource_not_found(e):
 socials_left = [
     social(
         "https://twitter.com/malpractitioner",
-        "twitter",
-        "Me on Twitter",
+        "Twitter",
         "I'm probably the most active here",
     ),
     social(
         "https://instagram.com/malpractitioner_",
-        "instagram",
-        "Me on Instagram",
+        "Instagram",
         "Primarily for food, music and keyboard stories",
     ),
     social(
         "https://github.com/chinatsu",
-        "github",
-        "Me on GitHub",
+        "GitHub",
         "Work and hobby projects",
     ),
     social(
         "https://steamcommunity.com/id/lomg",
-        "steam",
-        "Me on Steam",
+        "Steam",
         "I play Rocket League.. and that's about it",
     ),
     social(
         "https://www.linkedin.com/in/malpractitioner/",
-        "linkedin-box",
-        "Me on LinkedIn",
+        "LinkedIn",
         "Typically used to respond to headhunters, not much else",
     ),
 ]
@@ -52,32 +41,27 @@ socials_left = [
 socials_right = [
     social(
         "https://twitch.tv/cutenice",
-        "twitch",
-        "Me on Twitch",
+        "Twitch",
         "I used to stream a bit, but not so much anymore",
     ),
     social(
         "https://soundcloud.com/malpractitioner",
-        "soundcloud",
-        "Me on SoundCloud",
+        "SoundCloud",
         "I have other accounts too, but this one's the most recently active",
     ),
     social(
         "https://open.spotify.com/user/213p4w55e6upnsr73x6zbplya",
-        "spotify",
-        "Me on Spotify",
+        "Spotify",
         "My primary source for music",
     ),
     social(
         "https://www.discogs.com/user/cn_",
-        "disc",
-        "Me on Discogs",
+        "Discogs",
         "Used to document my physical music collection",
     ),
     social(
         "https://codegolf.stackexchange.com/users/91616/chinatsu",
-        "stack-overflow",
-        "Me on StackExchange",
+        "StackExchange",
         "Rarely active, mostly for golfing code",
     ),
 ]
@@ -141,43 +125,3 @@ def index():
         left=left,
         right=right,
     )
-
-
-@app.route("/blog/")
-def blogindex():
-    posts = []
-    print(os.path.join(os.getcwd(), blogpath))
-    categories = [
-        d
-        for d in os.listdir(blogpath)
-        if os.path.isdir(os.path.join(os.getcwd(), blogpath, d))
-    ]
-
-    for category in categories:
-        for post in os.listdir(os.path.join(blogpath, category)):
-            filepath = os.path.join(blogpath, category, post)
-            if os.path.isfile(filepath):
-                posts.append(Post(post, category, os.path.getctime(filepath)))
-
-    to_render = sorted(posts, key=lambda x: x.ctime, reverse=True)
-    for post in to_render:
-        with open(os.path.join(blogpath, post.category, post.name), "r") as f:
-            post.set_render(md(f.read()))
-    return render_template("blog.tpl", posts=to_render)
-
-
-@app.route("/blog/<category>/")
-def categoryindex(category):
-    posts = []
-    try:
-        for post in os.listdir(os.path.join(blogpath, category)):
-            filepath = os.path.join(blogpath, category, post)
-            if os.path.isfile(filepath):
-                posts.append(Post(post, category, os.path.getctime(filepath)))
-    except:
-        return abort(404, description="No such category")
-    to_render = sorted(posts, key=lambda x: x.ctime, reverse=True)
-    for post in to_render:
-        with open(os.path.join(blogpath, post.category, post.name), "r") as f:
-            post.set_render(md(f.read()))
-    return render_template("blog.tpl", posts=to_render)

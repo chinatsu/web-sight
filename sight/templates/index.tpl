@@ -7,8 +7,7 @@
     <meta name="viewport" content="width=device-width">
     <title>viridescent</title>
     <link rel="stylesheet" type="text/css" href="/static/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600&family=Poppins&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
   </head>
   <body>
     <main id="scroll-container">
@@ -25,8 +24,11 @@
             </section>
         </section>
         <button id="scroll-down" aria-label="Scroll down"></button>
-        <section class="centered secondary">
-            {% for social in socials_left %}{{ social }}{% endfor %}
+        <section class="content centered secondary">
+            <header><h1>Me on other platforms</h1></header>
+            <section>
+                {% for social in socials_left %}{{ social }}{% endfor %}
+            </section>
         </section>
         <section class="centered primary">
             {% for social in socials_right %}{{ social }}{% endfor %}

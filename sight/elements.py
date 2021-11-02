@@ -1,8 +1,8 @@
 from datetime import datetime
 
 
-def social(link, icon, label, description):
-        return f"<article><a href='{link}' target='_blank' aria-label='{label}'><i class='ri-{icon}-fill'></i> {label}</a><p>{description}</p></article>"
+def social(link, label, description):
+        return f"<article><a href='{link}' target='_blank' aria-label='{label}'>{label}</a><p>{description}</p></article>"
 
 
 article = lambda title, subtitle: f"<article><h2>{title}</h2><p>{subtitle}<p></article>"
