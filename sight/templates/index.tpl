@@ -23,7 +23,7 @@
                 {% for article in right %}{{ article }}{% endfor %}
             </section>
         </section>
-        <button id="scroll-down" aria-label="Scroll down"></button>
+        
         <section class="content centered secondary">
             <header><h1>Me on other platforms</h1></header>
             <section>
@@ -33,26 +33,8 @@
         <section class="centered primary">
             {% for social in socials_right %}{{ social }}{% endfor %}
         </section>
+        <button id="scroll-down" aria-label="Scroll down"></button>
+        <div id="smokescreen" class="primary"></div>
     </main>
   </body>
-  <script>
-    var wrapper = document.getElementById('scroll-container');
-    var arrow = document.getElementById('scroll-down');
-
-    wrapper.onscroll = function (evt) {
-        if (wrapper.scrollTop + window.innerHeight >= wrapper.scrollHeight - 100) {
-            if (!arrow.classList.contains("fade-out")) {
-                arrow.classList.add("fade-out");
-            }
-        } else {
-            if (arrow.classList.contains("fade-out")) {
-                arrow.classList.remove("fade-out");
-            }
-        }
-    }
-
-    arrow.onclick = function (evt) {
-        wrapper.scrollBy(0, window.innerHeight);
-    }
-  </script>
 </html>
